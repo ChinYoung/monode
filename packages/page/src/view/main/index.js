@@ -1,19 +1,12 @@
 import React from 'react';
-import style from './main.module.scss';
-import Store from './store';
-import { Button } from '@material-ui/core';
-import { logout } from '../../api';
-import Toast from 'toast';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-export default () => {
-  const showToast = _ => {
-    console.log("click")
-    Toast.info({message: " hello"})
-  }
-
+export default ({ match }) => {
   return (
-    <div className={style.container}>
-      <Button variant="contained" color="primary" onClick={ showToast }>open</Button>
-    </div>
+    <Switch>
+      <Route path='/' exact render={ _ => <Redirect to='/table' /> } />
+      <Route path='/table' exact render={ _ => (<div>table</div>) } />
+      <Redirect to='/404' />
+    </Switch>
   )
 }

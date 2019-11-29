@@ -3,7 +3,6 @@ import { Route, Redirect} from 'react-router-dom';
 import { cloneElement } from 'react';
 
 const PrivateRoute = ({authed, children, ...rest}) => {
-  console.log(authed)
   return (
     <Route 
       {...rest} 

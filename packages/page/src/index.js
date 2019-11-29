@@ -5,17 +5,25 @@ import PrivateRoute from './component/PrivateRoute';
 import store from './store';
 import Login from './view/login';
 import Main from './view/main';
-import { SnackbarProvider } from 'notistack';
+import NotFound from './view/404';
 
 const App = observer(_ => {
   const userStore = store.userStore
+  console.log(userStore)
   return (
     <Router>
       <Switch>
-        <Route path="/login" exact render={ ({location}) => (<Login location={location} userStore={userStore} />)} />
-        <PrivateRoute authed={store.userStore.authed}>
-          <Route path="/" exact render={ _ => (<Redirect to={{pathname: "/main"}} />)} />
-          <Route path="/main" exact render={ _ => (<Main />)} />
+        <Route path='/404' exact component={ NotFound } />
+        <Route path="/login" exact render={ 
+          ({ location }) => {
+            console.log(location)
+            return userStore.authed ? <Redirect to={ location.state && location.state.from ? location.state.from : '/' } />
+              : <Login login={ userStore.login } />
+          }
+        }
+        />
+        <PrivateRoute authed={ store.userStore.authed }>
+          <Main />
         </PrivateRoute>
       </Switch>
     </Router>
@@ -23,7 +31,5 @@ const App = observer(_ => {
 })
 
 export default _ => (
-  <SnackbarProvider maxSnack={5}>
-    <App />
-  </SnackbarProvider>
+  <App />
 )
