@@ -1,0 +1,15 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "cnpm",
+  "version": "0.0.0",
+  "command": {
+    "bootstrap": {
+      "hoist": true
+    },
+    "run": {
+      "stream": true
+    }
+  }
+}

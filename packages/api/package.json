@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "description": "backend api",
+  "author": "chin <woodichin@outlook.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "starter.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon -r esm ./starter.js"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "koa-webpack-middleware": "^1.0.7",
+    "nodemon": "^1.19.4",
+    "webpack": "^4.41.2"
+  }
+}

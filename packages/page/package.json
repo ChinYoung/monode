@@ -1,0 +1,35 @@
+{
+  "name": "page",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "chin <woodichin@outlook.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "./app.js",
+  "scripts": {},
+  "dependencies": {
+    "@material-ui/core": "^4.6.1",
+    "axios": "^0.19.0",
+    "css-loader": "^3.2.0",
+    "js-cookie": "^2.2.1",
+    "mobx": "^5.15.0",
+    "mobx-react": "^6.1.4",
+    "node-sass": "^4.13.0",
+    "notistack": "^0.9.6",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
