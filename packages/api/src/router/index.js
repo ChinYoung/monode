@@ -1,16 +1,9 @@
 import Router from 'koa-router';
-
+import UserRouter from './user';
+import TableRouter from './table';
 const router = new Router()
-
-router.post("/login", (ctx, next) => {
-  ctx.body = {
-    code: 0,
-    data: {
-      id: "id"
-    }
-  }
-  ctx.cookies.set("monode", "monode", {expires: new Date(Date.now() + 60 * 1000)})
-})
-
+router
+  .use('/user', UserRouter.routes())
+  .use('/table', TableRouter.routes())
 
 export default router

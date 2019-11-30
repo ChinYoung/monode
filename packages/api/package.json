@@ -17,10 +17,14 @@
     "dev": "cross-env NODE_ENV=development nodemon -r esm ./starter.js"
   },
   "dependencies": {
+    "config": "^3.2.4",
     "esm": "^3.2.25",
+    "knex": "^0.20.3",
     "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0"
+    "koa-static": "^5.0.0",
+    "mysql": "^2.17.1"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
