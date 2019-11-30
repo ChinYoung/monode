@@ -1,35 +1,64 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './component/PrivateRoute';
-import store from './store';
 import Login from './view/login';
 import Main from './view/main';
 import NotFound from './view/404';
 
-const App = observer(_ => {
-  const userStore = store.userStore
-  console.log(userStore)
+import { connect, Provider } from 'react-redux';
+import { createStore } from 'redux';
+import monodeApp from './store/monodeApp';
+
+const actions = {
+  setAuthState(authed) {
+    return {
+      type: 'SET_AUTH_STATUS',
+      authed
+    }
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    authed: state.authed
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAuthed: authed => {
+      dispatch(actions.setAuthState(authed))
+    }
+  }
+}
+
+const AppPage = ({ authed, setAuthed }) => {
+  console.log(authed)
   return (
     <Router>
       <Switch>
         <Route path='/404' exact component={ NotFound } />
-        <Route path="/login" exact render={ 
-          ({ location }) => {
-            console.log(location)
-            return userStore.authed ? <Redirect to={ location.state && location.state.from ? location.state.from : '/' } />
-              : <Login login={ userStore.login } />
-          }
-        }
+        <Route 
+          path="/login" 
+          exact 
+          render={
+            ({ location }) => authed ? <Redirect to={ location.state && location.state.from ? location.state.from : '/' } /> : <Login setAuthed={ setAuthed } />
+          } 
         />
-        <PrivateRoute authed={ store.userStore.authed }>
+        <PrivateRoute authed={ authed }>
           <Main />
         </PrivateRoute>
       </Switch>
     </Router>
   )
-})
+}
+
+const App = connect(mapStateToProps, mapDispatchToProps)(AppPage)
+
+const store = createStore(monodeApp)
 
 export default _ => (
-  <App />
+  <Provider store={ store }>
+    <App />
+  </Provider>
 )

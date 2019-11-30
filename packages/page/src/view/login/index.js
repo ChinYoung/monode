@@ -2,11 +2,10 @@ import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
-const LoginPage = ({ login, classes }) => {
-  console.log('login')
+const LoginPage = ({ setAuthed, classes }) => {
   const data = {}
   const handleLogin = _ => {
-    login(data)
+    setAuthed(true)
   }
   const handleChangeUsername = e => (data.username = e.target.detail)
 
