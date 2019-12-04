@@ -4,10 +4,8 @@ import PrivateRoute from './component/PrivateRoute';
 import Login from './view/login';
 import Main from './view/main';
 import NotFound from './view/404';
-
 import { connect, Provider } from 'react-redux';
-import { createStore } from 'redux';
-import monodeApp from './store/monodeApp';
+import store from './store/monodeApp';
 
 const actions = {
   setAuthState(authed) {
@@ -54,8 +52,6 @@ const AppPage = ({ authed, setAuthed }) => {
 }
 
 const App = connect(mapStateToProps, mapDispatchToProps)(AppPage)
-
-const store = createStore(monodeApp)
 
 export default _ => (
   <Provider store={ store }>

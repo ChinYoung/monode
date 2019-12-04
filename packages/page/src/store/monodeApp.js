@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import { combineReducers, createStore } from 'redux';
+
 
 
 const authed = (state=false, action) => {
@@ -14,4 +15,5 @@ const App = combineReducers({
   authed
 })
 
-export default App
+// export store instance instead of template, for the direct usage in utils
+export default createStore(App)

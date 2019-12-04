@@ -1,13 +1,12 @@
 import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import { login } from '../../api';
+import { login } from './api';
 import Toast from 'toast';
 
 const LoginPage = ({ setAuthed, classes }) => {
   const data = {}
   const handleLogin = _ => {
-    console.log(data)
     if (!data.username || !data.password) {
       Toast.error({message: '输入用户名和密码'})
       return false
@@ -15,11 +14,15 @@ const LoginPage = ({ setAuthed, classes }) => {
     login(data)
       .then(
         res => {
-          Toast.success({ message: 'Welcome'})
-          setAuthed(true)
+          if (res.data.token) {
+            Toast.success({ message: 'Welcome'})
+            setAuthed(true)
+          } else {
+            Toast.error({ message: res.message })
+          }
         },
          err => {
-           Toast.warning({ message: err.data.message})
+           Toast.warning({ message: 'Login failed' })
          } 
       )
   }

@@ -9,12 +9,16 @@ router.post('/login', async (ctx, next) => {
   if (userList.length) {
     ctx.body = {
       code: 0,
-      message: 'welcome'
+      message: 'welcome',
+      data: {
+        token: 'monode'
+      }
     }
   } else {
     ctx.body = {
-      code: 69403,
-      message: '用户名或密码错误'
+      code: 0,
+      message: '用户名或密码错误',
+      data: {}
     }
   }
 })
