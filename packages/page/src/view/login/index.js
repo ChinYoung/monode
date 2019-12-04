@@ -13,7 +13,15 @@ const LoginPage = ({ setAuthed, classes }) => {
       return false
     }
     login(data)
-      .then(res => setAuthed(true), err => Toast.warning({ message: err.data.message}))
+      .then(
+        res => {
+          Toast.success({ message: 'Welcome'})
+          setAuthed(true)
+        },
+         err => {
+           Toast.warning({ message: err.data.message})
+         } 
+      )
   }
   return (
     <div className={ classes.container }>
