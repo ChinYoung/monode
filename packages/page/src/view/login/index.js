@@ -32,22 +32,27 @@ const LoginPage = ({ setAuthed, classes }) => {
         Login
       </h2>
       <TextField
-        label="Username"
+        label='Username'
         onChange={ e => (data.username = e.target.value) }
       />
-      <div style={{ height: "1rem" }}></div>
+      <div style={{ height: '1rem' }}></div>
       <TextField
-        label="Password"
-        type="password"
+        label='Password'
+        type='password'
         onChange={ e => (data.password = e.target.value) }
       />
-      <div style={{ height: "2rem" }}></div>
-      <Button variant="contained" color="primary" onClick={ handleLogin }>
+      <div style={{ height: '2rem' }}></div>
+      <Button 
+        variant='contained'
+        color='primary'
+        onClick={ handleLogin }
+      >
         Login
       </Button>
     </div>
   )
 }
+
 
 const styles = {
   container: {
