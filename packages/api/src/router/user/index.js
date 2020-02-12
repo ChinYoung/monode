@@ -5,8 +5,9 @@ const router = new Router()
 
 router.post('/login', async (ctx, next) => {
   const { username, password } = ctx.request.body
-  const userList = await User.getUser(username, password)
-  if (userList.length) {
+  let userList
+  // userList = await User.getUser(username, password)
+  if (userList && userList.length) {
     ctx.body = {
       code: 0,
       message: 'welcome',

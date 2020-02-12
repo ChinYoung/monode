@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { login } from './api';
-import Toast from 'toast';
+import Toast from 'material-toast';
 
 const LoginPage = ({ setAuthed, classes }) => {
   const data = {}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Config from 'Config';
 import store from '../store/monodeApp';
-import Toast from 'toast';
+import Toast from 'material-toast';
 
 const request = axios.create({
   baseURL: Config.baseURL
